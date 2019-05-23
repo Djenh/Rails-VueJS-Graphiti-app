@@ -1,13 +1,13 @@
 # README
 
 
-* Ruby version
-ruby '2.5.3'
-rails '5.2.3'
-vuejs '2.6.10'
+* Ruby version  
+ruby '2.5.3'  
+rails '5.2.3'  
+vuejs '2.6.10'  
 
 
-* Configuration
+* Configuration  
 bundle install and yarn install
 
 
@@ -16,9 +16,9 @@ bundle install and yarn install
 
 1- Create project with : **rails new Bookshop** After, enter in app folder **cd Bookshop** in terminal
 
-2- Add required gem in Gemfile file: ---
-	# Transpile app-like JavaScript
-	gem 'webpacker'
+2- Add required gem in Gemfile file:  
+	# Transpile app-like JavaScript  
+	gem 'webpacker'  
 
 	# Graphiti for using Rails & GraphQL
 	gem 'graphiti'
@@ -34,32 +34,32 @@ bundle install and yarn install
 
 3- Launch **bundle install** in terminal
 
-4- After installing gems, execute three following commands
-	rails webpacker:install
-	rails webpacker:install:vue
-	yarn install
+4- After installing gems, execute three following commands  
+	**rails webpacker:install  
+	rails webpacker:install:vue  
+	yarn install**
 
 5- Add following in config/initializers/content_security_policy.rb file
-	`Rails.application.config.content_security_policy do |policy|
-	  if Rails.env.development?
-		policy.script_src :self, :https, :unsafe_eval
-		policy.connect_src :self, :https, 'http://localhost:3035', 'ws://localhost:3035'
-	  else
-		policy.script_src :self, :https
-	  end
+	`Rails.application.config.content_security_policy do |policy|  
+	  if Rails.env.development?  
+		policy.script_src :self, :https, :unsafe_eval  
+		policy.connect_src :self, :https, 'http://localhost:3035', 'ws://localhost:3035'  
+	  else  
+		policy.script_src :self, :https  
+	  end  
 	end`
 
-6- To enable webpacker in your rails app, go to app/views/layout/application.html.erb file and replace:
-	   	`<%= stylesheet_link_tag    'application', media: 'all' %>
-	    <%= javascript_include_tag 'application' %>`
-	with:
-	    `<%= stylesheet_pack_tag 'application', media: 'all' %>
-	    <%= javascript_pack_tag 'application' %>`
+6- To enable webpacker in your rails app, go to app/views/layout/application.html.erb file and replace:  
+	   	`<%= stylesheet_link_tag    'application', media: 'all' %>  
+	    <%= javascript_include_tag 'application' %>`  
+	with:  
+	    `<%= stylesheet_pack_tag 'application', media: 'all' %>  
+	    <%= javascript_pack_tag 'application' %>`  
 
-7- Initialize a webpack in VueJS side by going to app/javascript/packs/applications.js file and write following configuration : 
-	import Vue from 'vue'
-	import App from '../App.vue'
-	import router from '../router'
+7- Initialize a webpack in VueJS side by going to app/javascript/packs/applications.js file and write following configuration :   
+	import Vue from 'vue'  
+	import App from '../App.vue'  
+	import router from '../router'  
 
 	Vue.config.productionTip = false
 
@@ -76,27 +76,27 @@ bundle install and yarn install
 
 8- In app/javascript/packs/hello_vue.js file, put all code in comment
 
-9- In App.vue file, put this content
-	`<template>
-	  <div id="app">
-	    <router-view/>
-	  </div>
-	</template>
-	<script>
-	  export default {
-	    data: function () {
-	      return {	        
-	      }
-	    }
-	  };
-	</script>
+9- In App.vue file, put this content  
+	`<template>  
+	  <div id="app">  
+	    <router-view/>  
+	  </div>  
+	</template>  
+	<script>  
+	  export default {  
+	    data: function () {  
+	      return {    
+	      }  
+	    }  
+	  };  
+	</script>  
 	<style></style>`
 
 
-10- Execute **yarn add vue-router**. Then in app/javascript/ folder create a file named *router.js* Then write following code in it :
-	import Vue from 'vue'
-	import Router from 'vue-router'
-	import Home from 'components/Home'
+10- Execute **yarn add vue-router**. Then in app/javascript/ folder create a file named *router.js* Then write following code in it :  
+	import Vue from 'vue'  
+	import Router from 'vue-router'  
+	import Home from 'components/Home'  
 
 	Vue.use(Router)
 
@@ -114,21 +114,21 @@ bundle install and yarn install
 	  ]
 	})
 
-11- Create a folder named "components" and create in it a Home.vue file. Write a sample vue component code in that file. Below is an example
-	`<template>
-	  <div >
-	    <p> Welcome in VueJS Home component </p>
-	  </div>
-	</template>
-	<script>
-	  export default {
-	  	name: 'Home',
-	    data: function () {
-	      return {	        
-	      }
-	    }
-	  };
-	</script>
+11- Create a folder named "components" and create in it a Home.vue file. Write a sample vue component code in that file. Below is an example  
+	`<template>  
+	  <div >  
+	    <p> Welcome in VueJS Home component </p>  
+	  </div>  
+	</template>  
+	<script>  
+	  export default {  
+	  	name: 'Home',  
+	    data: function () {  
+	      return {  	        
+	      }  
+	    }  
+	  };  
+	</script>  
 	<style></style>`
 
 12- Launch in your terminal **rails g controller Main index**
@@ -136,32 +136,32 @@ bundle install and yarn install
 13- Update Rails routes, in config/routes.rb write 
 	*root 'main#index'*
 
-14- Launch your app by opening two terminals
-	Execute **ruby bin\webpack-dev-server**  in first terminal
-	Execute **rails s** in the second one
+14- Launch your app by opening two terminals  
+	Execute **ruby bin\webpack-dev-server**  in first terminal  
+	Execute **rails s** in the second one  
 	Then go to url localhost:3000/ in your browser to see your app interface.
 
-15- Everything must be ok at this step. If right, then configure your database environment in config/database.yml file.
-	`default: &default
-	  adapter: postgresql
-	  pool: 5
-	  encoding: unicode
-	  host: localhost
-	  port: 5432
-	  username: root
+15- Everything must be ok at this step. If right, then configure your database environment in config/database.yml file.  
+	`default: &default  
+	  adapter: postgresql  
+	  pool: 5  
+	  encoding: unicode  
+	  host: localhost  
+	  port: 5432  
+	  username: root  
 	  password: accesrootbd`
 
 	development:
 	  <<: *default
 	  database: bookshop
 
-16- Install Bootstrap and VueX by executing this command
+16- Install Bootstrap and VueX by executing this command  
 	**yarn add bootstrap vuex**
 
 17- To configure VueX in our app, first create a file named "store.js" in app/javascript.
-Then write following code in it.
-	import Vue from "vue";
-	import Vuex from "vuex";
+Then write following code in it.  
+	import Vue from "vue";  
+	import Vuex from "vuex";  
 
 	Vue.use(Vuex);
 
@@ -197,17 +197,17 @@ Then write following code in it.
 
 22- Add Spraypaint to app. Execute **yarn add spraypaint isomorphic-fetch**
 
-23- Add boostrap to App.vue component style part
-	`<style lang="scss">
-	@import '~bootstrap/scss/bootstrap.scss';
+23- Add boostrap to App.vue component style part  
+	`<style lang="scss">  
+	@import '~bootstrap/scss/bootstrap.scss';  
 	</style>`
 
-24- Initialize Spraypaint in our app. Create a new file named *model.js* in app/javascript/ folder. Put following content in it.
-	`const {
-	  SpraypaintBase,
-	  attr,
-	  belongsTo,
-	  hasMany,
+24- Initialize Spraypaint in our app. Create a new file named *model.js* in app/javascript/ folder. Put following content in it.  
+	`const {  
+	  SpraypaintBase,  
+	  attr,  
+	  belongsTo,  
+	  hasMany,  
 	  hasOne  
 	} = require("spraypaint/dist/spraypaint")`
 
@@ -218,10 +218,10 @@ Then write following code in it.
 	  }
 	})
 
-25- Add models to Spraypaint
-	`export const Author = ApplicationRecord.extend({
-	  static: {
-	    jsonapiType: "authors"
+25- Add models to Spraypaint  
+	`export const Author = ApplicationRecord.extend({  
+	  static: {  
+	    jsonapiType: "authors"  
 	  },`
 
 	  attrs: {
